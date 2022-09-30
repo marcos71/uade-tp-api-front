@@ -1,0 +1,88 @@
+[
+    {
+        "id": "1",
+        "nombre": "Java 8",
+        "profesor": "admin_prof",
+        "costo": "200",
+        "frecuencia": "Unica",
+        "duracion": "4",
+        "desc": "probando una descripcion q deberia ser bastante larga y en lo posible generar un salto de linea",
+        "materia": "programacion 1",
+        "valoracion":4.8,
+        "alumno":"admin_alumno",
+        "estado":"Aceptado",
+        "publicado":true
+    },
+    {
+        "id": "2",
+        "nombre": "ReactJs",
+        "profesor": "Profesor X",
+        "costo": "350",
+        "frecuencia": "Semanal",
+        "duracion": "3",
+        "desc": "probando un curso de ReactJs",
+        "materia": "programacion 1",
+        "valoracion":3.4,
+        "alumno":"admin_alumno",
+        "estado":"Finalizado",
+        "publicado":false
+    },
+    {
+        "id": "3",
+        "nombre": "NodeJs",
+        "profesor": "Profesor X",
+        "costo": "400",
+        "frecuencia": "Semanal",
+        "duracion": "4",
+        "desc": "Curso de NodeJs",
+        "materia": "programacion 1",
+        "valoracion":4.2,
+        "alumno":"admin_alumno",
+        "estado":"Solicitada",
+        "publicado":true
+    }
+    ,
+    {
+        "id": "4",
+        "nombre": "SQL",
+        "profesor": "admin_prof",
+        "costo": "400",
+        "frecuencia": "Mensual",
+        "duracion": "4",
+        "desc": "Curso de SQL",
+        "materia": "programacion 2",
+        "valoracion":4.2,
+        "alumno":"marcos",
+        "estado":"Aceptado",
+        "publicado":true
+    },
+    {
+        "id": "5",
+        "nombre": "MongoDB",
+        "profesor": "admin_prof",
+        "costo": "400",
+        "frecuencia": "Semanal",
+        "duracion": "4",
+        "desc": "Curso de MongoDB",
+        "materia": "programacion 2",
+        "valoracion":4.5,
+        "alumno":"marcos",
+        "estado":"Solicitada",
+        "mensaje":"Quiero solicitar el curso de MongoDB por una oportunidad laboral",
+        "publicado":true
+    },
+    {
+        "id": "6",
+        "nombre": "Typescript",
+        "profesor": "admin_prof",
+        "costo": "350",
+        "frecuencia": "Unica",
+        "duracion": "3",
+        "desc": "probando un curso no publicado",
+        "materia": "programacion 1",
+        "valoracion":3.4,
+        "alumno":"admin_alumno",
+        "estado":"Finalizado",
+        "publicado":false
+    }
+]
