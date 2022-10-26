@@ -16,7 +16,7 @@ function a11yProps(index) {
     };
 }
 
-export default function CursoAlumnoCompra() {
+export default function CursoAlumnoCompra(props) {
     const logedUser = localStorage.getItem('logedUser');
     const parsedUser = JSON.parse(logedUser);
 
@@ -24,6 +24,8 @@ export default function CursoAlumnoCompra() {
 
     // Obtener la id del curso de la URL
     const { id } = params;
+
+    console.log(props);
     
     // Llamar a la API para obtener el curso por id
     const cursoObj = cursosJson.find(obj => obj.id === id);

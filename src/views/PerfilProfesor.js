@@ -20,7 +20,7 @@ const theme = createTheme();
 function PerfilProfesor() {
     const [fecha, setFecha] = useState(moment);
     const [rows, setRows] = useState([]);
-    const [titulo, setTitulo] = useState();
+    const [titulo, setTitulo] = useState('');
     const [errorMessage, setErrorMessage] = useState();
     const [isError, setIsError] = useState(false);
 
@@ -32,10 +32,6 @@ function PerfilProfesor() {
 
     const handleChange = (newValue) => {
         setFecha(newValue);
-    };
-
-    const handleChangeTitulo = (newValue) => {
-        setTitulo(newValue.target.value);
     };
 
     const handleAdd = () => {
@@ -50,6 +46,7 @@ function PerfilProfesor() {
 
         const newRows = rows.concat(createData(titulo, fecha.format('DD/MM/YYYY')));
         setRows(newRows);
+        setTitulo('');
     };
 
     const onDeleteRow = (row) => {
@@ -114,7 +111,7 @@ function PerfilProfesor() {
                         </Typography>
                     </Grid>
                     <Grid item xs={12} sm={2}>
-                        <TextField onChange={handleChangeTitulo} helperText={errorMessage} error={isError}></TextField>
+                        <TextField value={titulo} onChange={(e) => setTitulo(e.target.value)} helperText={errorMessage} error={isError}></TextField>
                     </Grid>
                     <Grid item xs={12} sm={1}>
                         <Typography>

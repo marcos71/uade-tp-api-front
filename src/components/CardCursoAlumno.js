@@ -8,13 +8,14 @@ import Typography from '@mui/material/Typography';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import { useNavigate } from 'react-router-dom';
-import { IconButton, Rating } from '@mui/material';
+import { Grid, IconButton, Rating } from '@mui/material';
 import { useState } from 'react';
 
 export default function CardAlumnoCurso(props) {
     const navigate = useNavigate();
     const { nombre, materia, desc, id, valoracion, profesor, estado } = props.curso;
     const { contratar, solicitud } = props;
+    const [estadoCurso, setEstadoCurso] = useState(estado);
 
     const [finalizado, setFinaliado] = useState(estado === 'Finalizado' || estado === 'Cancelado');
 
@@ -29,6 +30,7 @@ export default function CardAlumnoCurso(props) {
     const handleFinalizarCurso = () => {
         // Llamar a la API para cambiar el estado del curso a "Finalizado"
         console.log('FINALIZADO');
+        setEstadoCurso('Finalizado');
         setFinaliado(true);
     };
 
@@ -56,18 +58,30 @@ export default function CardAlumnoCurso(props) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small" variant='outlined' onClick={handleNavigate}>Ver Curso</Button>
+                    <Grid container spacing={2} sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Grid item xs={12} sm={6}>
+                            <Button size="small" variant='outlined' onClick={handleNavigate}>Ver Curso</Button>
 
-                    {!contratar ? solicitud ?
-                        <IconButton onClick={handleCanelarCurso} >
-                            <CancelIcon />
-                        </IconButton> :
-                        !finalizado &&
-                        <IconButton onClick={handleFinalizarCurso} >
-                            <CheckCircleIcon />
-                        </IconButton>
-                        : <></>
-                    }
+                            {!contratar ? solicitud ?
+                                <IconButton onClick={handleCanelarCurso} >
+                                    <CancelIcon />
+                                </IconButton> :
+                                !finalizado &&
+                                <IconButton onClick={handleFinalizarCurso} >
+                                    <CheckCircleIcon />
+                                </IconButton>
+                                : <></>
+                            }
+                        </Grid>
+                        {
+                            !contratar &&
+                            <Grid item xs={12} sm={6} sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                                <Typography variant="body2">
+                                    {estadoCurso}
+                                </Typography>
+                            </Grid>
+                        }
+                    </Grid>
                 </CardActions>
             </Card>
         </Box>

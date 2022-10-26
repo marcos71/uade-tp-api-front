@@ -22,6 +22,7 @@ export default function SignIn() {
     const [errorPass, setErrorPass] = useState(false);
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
+    const [errorUsuario, setErrorUsuario] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = (event) => {
@@ -39,6 +40,7 @@ export default function SignIn() {
         const logedUser = users.find(user => user.username === email && user.password === pass);
         // Si es un usuario valido enviarlo a su correspondiente pagina de home
         if (logedUser) {
+            setErrorUsuario(false);
             localStorage.setItem('logedUser', JSON.stringify(logedUser));
             if (logedUser.role === 'alumno') {
                 navigate('/home/alumno', {replace: true});
@@ -46,7 +48,7 @@ export default function SignIn() {
                 navigate('/home/profesor', {replace: true});
             }
         } else {
-            // Usuario invalido, mostrar un mensaje
+            setErrorUsuario(true);
         }
     };
 
@@ -87,6 +89,10 @@ export default function SignIn() {
                             onChange={e => setPass(e.target.value)}
                             error={errorPass}
                         />
+                        {
+                            errorUsuario && 
+                            <Typography color={'red'}>Usuario o Password incorrectos</Typography>
+                        }
                         <Button
                             type="submit"
                             fullWidth

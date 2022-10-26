@@ -15,9 +15,11 @@ function a11yProps(index) {
     };
 }
 
-export default function CursoAlumno() {
+export default function CursoAlumno(props) {
     const logedUser = localStorage.getItem('logedUser');
     const parsedUser = JSON.parse(logedUser);
+
+    // si contratar == false, validar la id del curso y id del alumno
 
     const params = useParams();
 
@@ -25,7 +27,7 @@ export default function CursoAlumno() {
     const { id } = params;
     
     // Llamar a la API para obtener el curso por id
-    const cursoObj = cursosJson.find(obj => obj.id === id && obj.alumno === parsedUser.username);
+    const cursoObj = cursosJson.find(obj => obj.id === id);
 
     // Lanzar error si no existe el curso
     //navigate('/alumno/cursos');
@@ -46,10 +48,10 @@ export default function CursoAlumno() {
                 </Tabs>
             </Box>
             <TabPanel value={value} index={0}>
-                <DetalleCursoAlumno curso={curso} />
+                <DetalleCursoAlumno curso={curso} contratar={props.contratar} />
             </TabPanel>
             <TabPanel value={value} index={1}>
-                <ValoracionCursoAlumno curso={curso} />
+                <ValoracionCursoAlumno curso={curso} contratar={props.contratar} />
             </TabPanel>
         </Box>
     );

@@ -25,9 +25,8 @@ function PerfilEstudiante() {
     const [dateValue, setDateValue] = useState(moment);
     const [rows, setRows] = useState([]);
     const [nivel, setNivel] = useState("Primario");
-    const [titulo, setTitulo] = useState();
+    const [titulo, setTitulo] = useState('');
     const [estado, setEstado] = useState("curso");
-    const [errorMessage, setErrorMessage] = useState();
     const [isError, setIsError] = useState(false);
 
     // leer el usuario del localStorage y si el rol no es alumno, mandar a login
@@ -54,16 +53,14 @@ function PerfilEstudiante() {
 
     const handleAdd = () => {
         if (!titulo || titulo.length === 0) {
-            setErrorMessage("Obligatorio");
             setIsError(true);
             return;
         }
-
-        setErrorMessage();
         setIsError(false);
 
         const newRows = rows.concat(createData(nivel, titulo, estado));
         setRows(newRows);
+        setTitulo('');
     };
 
     const onDeleteRow = (row) => {
@@ -160,7 +157,7 @@ function PerfilEstudiante() {
                         </Typography>
                     </Grid>
                     <Grid item xs={12} sm={2}>
-                        <TextField onChange={handleChangeTitulo} helperText={errorMessage} error={isError}></TextField>
+                        <TextField value={titulo} onChange={(e) => setTitulo(e.target.value)} error={isError}></TextField>
                     </Grid>
                     <Grid item xs={12} sm={1}>
                         <Typography>
